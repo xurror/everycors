@@ -1,0 +1,17 @@
+dist: xenial
+language: node_js
+node_js:
+- '8'
+deploy:
+  provider: heroku
+  api_key:
+    secure: HQClkjY1YxnNNhJGu8M5SEn/BTMH1QKq+VDHL9Qq9nAej3ShPugfjJbkVP/WKqrlCsQctEVFgEe0NKz2T1h07gMSkk8eBvMySzEfihEbXqxxYQrxnR0o2up9h1Mov7X0gPmcVXBCzpdooPjRfUGf7TkQHIvSMM2AWlty2Ycpx5qyOJf9KClLnrrWyYhVN2gnaBY/LIVM9QZKXkPTbFBFT8UoyhsHWDR3OPclDLmVAA+NfC0Sh3W6GFxKbZpVMt/OLY4zi0Oi9JyGbOtKF9iTm/LUJCr9WX16tM08IhlFmvLoSGI5OjBIb+V0hzqi7m0/noa0WveQDOdOFv57s0Oy/grugcCpa4cQ+og82W1cgVvQwmBwA6qWh1SonAXjJj6B1z4CTcOsbgeOq+2aM9U21/iE+dKedSDY2yBiGWjBlQe+7t1WdjifaLwhMYkg1Pb+8+3KjiUjC0qupfhEzYp3Hlp1oeaIx3W5iZwoY5G+ils/bg9AQrxvc1IKRnTHVdrtAvSGr7M65giO/yP/jajiPqp+pcZHO22S73+XZhQRudPG/7EZ7EBKf/C5uG2rlEZ/zBOhWYYwqCwhnzzMrAe+T1urrtstLm3BMDRpM94PzKm3X2UDvp1snJjepKVwaOFpbmbGiBbjVwJMZH0Y9qtpeWWGraMvhlXRZ80UdXAl0JE=
+  on: master
+  app: everycors
+run:
+- npm run build
+cache:
+  directories:
+  - "~/.npm"
+notifications:
+  email: true
