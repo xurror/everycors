@@ -15,34 +15,34 @@ app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
     res.header("Access-Control-Allow-Headers", req.header('access-control-request-headers'));
 
-    if (req.method === 'OPTIONS') {
-        // CORS Preflight
-        res.send();
-    } else {
-        var targetURL = req.header('target-url');
-        if (!targetURL) {
-            res.send(500, { error: 'There is no Target-Endpoint header in the request' });
-            return;
-        }
-        var headers = {}
-        if(req.header('WebApiAuthTicket')) headers['WebApiAuthTicket'] = req.header('WebApiAuthTicket');
-        if(req.header('deviceId')) headers['deviceId'] = req.header('deviceId');
-        if(req.header('deviceType')) headers['deviceType'] = req.header('deviceType');
-        if(req.header('userName')) headers['userName'] = req.header('userName');
-        if(req.header('password')) headers['password'] = req.header('password');
-        if(req.header('Accept')) headers['Accept'] = req.header('Accept');        
-        if(req.header('Content-Type')) headers['Content-Type'] = req.header('Content-Type');        
-        if(req.header('webapiauthticket')) headers['WebApiAuthTicket'] = req.header('webapiauthticket');
-        if(req.header('accept')) headers['Accept'] = req.header('accept');        
-        if(req.header('content-type')) headers['Content-Type'] = req.header('content-type');        
-        request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
-            function (error, response, body) {
-                if (error) {
-                    console.error('error: ' + response.statusCode)
-                }
-//                console.log(body);
-            }).pipe(res);
-    }
+//     if (req.method === 'OPTIONS') {
+//         // CORS Preflight
+//         res.send();
+//     } else {
+//         var targetURL = req.header('target-url');
+//         if (!targetURL) {
+//             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
+//             return;
+//         }
+//         var headers = {}
+//         if(req.header('WebApiAuthTicket')) headers['WebApiAuthTicket'] = req.header('WebApiAuthTicket');
+//         if(req.header('deviceId')) headers['deviceId'] = req.header('deviceId');
+//         if(req.header('deviceType')) headers['deviceType'] = req.header('deviceType');
+//         if(req.header('userName')) headers['userName'] = req.header('userName');
+//         if(req.header('password')) headers['password'] = req.header('password');
+//         if(req.header('Accept')) headers['Accept'] = req.header('Accept');        
+//         if(req.header('Content-Type')) headers['Content-Type'] = req.header('Content-Type');        
+//         if(req.header('webapiauthticket')) headers['WebApiAuthTicket'] = req.header('webapiauthticket');
+//         if(req.header('accept')) headers['Accept'] = req.header('accept');        
+//         if(req.header('content-type')) headers['Content-Type'] = req.header('content-type');        
+//         request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
+//             function (error, response, body) {
+//                 if (error) {
+//                     console.error('error: ' + response.statusCode)
+//                 }
+// //                console.log(body);
+//             }).pipe(res);
+//     }
 });
 
 app.set('port', process.env.PORT || 3000);
